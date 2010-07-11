@@ -21,4 +21,4 @@ paths = store["#{tag}:paths"]
 path_tuples = paths.map { |path| [store["#{path}:#{tag}:score"] || 0, path] }
 tuple = path_tuples.sort { |a, b| a[0] <=> b[0] }[0]
 
-puts tuple[1] || ""
+puts tuple.inspect

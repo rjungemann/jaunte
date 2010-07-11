@@ -46,13 +46,14 @@ For example,
 	cd /usr/lib # change directory to /usr/lib
 	j Pictures # return to /Users/NAME/Pictures
 
+Lastly, you can type in `jaunte-stat` to see the weights and paths for a particular tag.
+
 
 To Do:
 
-* Make tags more granular
-* Allow a user to see all paths and weights for a particular tag
 * Use a non-single-file database (perhaps using Moneta::File or another relatively cross-platform Moneta adapter)
-* Needs specs
-* Break out some code into libraries
-* Allow for hot-swappable score weighing systems
+* Create specs
+* Move out some code into lib directory
+* Make weighing system extendable
+* Make tagging system extendable (the system for turning a path into a set of tags)
 * Push to rubygems.org

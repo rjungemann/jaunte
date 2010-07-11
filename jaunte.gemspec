@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
     Dir['vendor/**/*.rb']
   s.require_path = 'lib'
   #s.autorequire = 'jaunte'
-  s.executables = ['jaunte-append', 'jaunte-jump']
+  s.executables = ['jaunte-append', 'jaunte-jump', 'jaunte-stat']
   s.has_rdoc = true
   s.extra_rdoc_files = Dir['[A-Z]*']
   s.rdoc_options << '--title' <<  'jaunte -- ...'
