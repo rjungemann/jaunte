@@ -1,0 +1,24 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+
+gem "moneta"
+gem "json_pure"
+
+require 'pathname'
+require 'moneta'
+require "#{File.dirname(__FILE__)}/moneta-yaml"
+require 'json'
+
+home = ENV['HOME']
+jaunte_dir = "#{home}/.jaunte"
+
+Dir.mkdir(jaunte_dir) unless File.exists?(jaunte_dir)
+
+store = Moneta::YAML.new(:path => "#{jaunte_dir}/catalog.yaml")
+tag = ARGV[0]
+paths = store["#{tag}:paths"]
+path_tuples = paths.map { |path| [store["#{path}:#{tag}:score"] || 0, path] }
+tuple = path_tuples.sort { |a, b| a[0] <=> b[0] }[0]
+
+puts tuple[1] || ""
