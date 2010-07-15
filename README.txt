@@ -48,12 +48,28 @@ For example,
 
 Lastly, you can type in `jaunte-stat` to see the weights and paths for a particular tag.
 
+Jaunte can be extended by overriding the "weigh" and the "taggify" methods in the Jaunte class. This can be done by adding something like the following to the end of the lib/jaunte.rb file:
+
+	class Jaunte
+		def weigh path, tag, tags
+			1 # all tags are weighed the same
+		end
+	end
+	
+or
+
+	class Jaunte
+		def taggify path
+			path.split("/")[1..-1].reverse # tags are in reverse order
+		end
+	end
+	
+The db used can be swapped with any Moneta-compatible storage engine. At the moment the easiest way to do this is to set the "defaults_store" class variable on the Jaunte class. You could add this to the bottom of lib/jaunte.rb:
+
+	Jaunte.default_store =
+		Moneta::YAML.new(:path => "#{ENV['HOME']}/.jaunte/catalog.yml")
 
 To Do:
 
 * Use a non-single-file database (perhaps using Moneta::File or another relatively cross-platform Moneta adapter)
-* Create specs
-* Move out some code into lib directory
-* Make weighing system extendable
-* Make tagging system extendable (the system for turning a path into a set of tags)
 * Push to rubygems.org

@@ -1,6 +1,6 @@
 spec = Gem::Specification.new do |s|
   s.name = 'jaunte'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = "A utility to allow a user to quickly move from one directory to another."
   s.description = "A utility to allow a user to quickly move from one directory to another by remembering the most commonly-accessed directories."
   s.files = Dir['lib/**/*.rb'] + Dir['test/**/*.rb'] + Dir['bin/**/*'] +

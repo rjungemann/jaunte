@@ -1,32 +1,6 @@
 #!/usr/bin/ruby
 
-require 'rubygems'
+require "#{File.dirname(__FILE__)}/../lib/jaunte"
 
-gem "moneta"
-gem "json_pure"
-
-require 'pathname'
-require 'moneta'
-require "#{File.dirname(__FILE__)}/../vendor/moneta-yaml"
-require 'json'
-
-home = ENV['HOME']
-jaunte_dir = "#{home}/.jaunte"
-
-Dir.mkdir(jaunte_dir) unless File.exists?(jaunte_dir)
-
-store = Moneta::YAML.new(:path => "#{jaunte_dir}/catalog.yaml")
-dir = Dir.pwd
-path = Pathname.new(dir).expand_path.to_s
-tags = (path.split("/")[1..-1] || []).reverse
-
-tags.each_with_index do |tag, i|
-  key = "#{tag}:paths"
-  score_key = "#{path}:#{tag}:score"
-  weight = i > 10 ? 0 : 1 - (i * 0.1)
-  score = (store.has_key?(score_key) ? store[score_key] : 0) + weight
-  
-  store[key] ||= []
-  store[key] = store[key] << path unless store[key].include?(path)
-  store[score_key] = score
-end
+jaunte = Jaunte.new
+jaunte.append Dir.pwd
