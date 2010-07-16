@@ -51,7 +51,7 @@ Lastly, you can type in `jaunte-stat` to see the weights and paths for a particu
 Jaunte can be extended by overriding the "weigh" and the "taggify" methods in the Jaunte class. This can be done by adding something like the following to the end of the lib/jaunte.rb file:
 
 	class Jaunte
-		def weigh path, tag, tags
+		def weigh path, tag, tags, i
 			1 # all tags are weighed the same
 		end
 	end

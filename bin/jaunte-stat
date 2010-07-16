@@ -4,4 +4,4 @@ require "#{File.dirname(__FILE__)}/../lib/jaunte"
 
 jaunte = Jaunte.new
 
-puts jaunt.stat(ARGV[0]).inspect
+puts jaunte.stat(ARGV[0]).inspect
